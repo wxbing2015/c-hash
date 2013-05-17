@@ -115,10 +115,10 @@ int hash_add(HashTable *ht, char *arKey, void *pData, int nDataSize)
     memcpy(pDataCopy,pData,nDataSize);
     while (p != NULL) {
         if (p->arKey == arKey || ((p->keyLength == keyLength) && !memcmp(p->arKey, arKey, keyLength))) {
-                free(p->pData);
-                p->pData = pDataCopy;
-                p->dataLength = nDataSize;
-                return SUCCESS;
+            free(p->pData);
+            p->pData = pDataCopy;
+            p->dataLength = nDataSize;
+            return SUCCESS;
         }
         p = p->pNext;
     }
@@ -226,7 +226,7 @@ int hash_exists(HashTable *ht, char *arKey)
     p = ht->arBuckets[nIndex];
     while (p != NULL) {
         if (p->arKey == arKey || ((p->keyLength == keyLength) && !memcmp(p->arKey, arKey, keyLength))) {
-                return EXISTS;
+            return EXISTS;
         }
         p = p->pNext;
     }
