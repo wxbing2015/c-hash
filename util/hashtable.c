@@ -226,11 +226,11 @@ int hash_exists(HashTable *ht, char *arKey)
     p = ht->arBuckets[nIndex];
     while (p != NULL) {
         if (p->arKey == arKey || ((p->keyLength == keyLength) && !memcmp(p->arKey, arKey, keyLength))) {
-                return 1;
+                return EXISTS;
         }
         p = p->pNext;
     }
-    return 0;
+    return NOTEXISTS;
 }
 
 int hash_num_elements(HashTable *ht)
