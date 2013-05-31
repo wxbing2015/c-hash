@@ -104,7 +104,7 @@ int hash_add(HashTable *ht, char *arKey, void *pData, int nDataSize)
     Bucket *p;
     void * pDataCopy = NULL;
     char * pKeyCopy  = NULL;
-    int keyLength = strlen((char*)arKey);
+    int keyLength = strlen((char*)arKey) + 1;
     if (keyLength <= 0)
         return FAILURE;
 
@@ -126,8 +126,9 @@ int hash_add(HashTable *ht, char *arKey, void *pData, int nDataSize)
     if (!p) {
         return FAILURE;
     }
-    pKeyCopy = (char*) malloc(sizeof(keyLength));
+    pKeyCopy = (char*) malloc(keyLength);
     memcpy(pKeyCopy,arKey,keyLength);
+    pKeyCopy[keyLength] = '\0';
     p->h = h;
     p->arKey = pKeyCopy;
     p->keyLength = keyLength;
