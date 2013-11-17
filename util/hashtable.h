@@ -19,8 +19,8 @@
 #define VLEN       8
 #define TNLEN     32
 
-#define create_hashmap(size, ...)             \
-       _create_hashmap(size, #__VA_ARGS__)
+#define create_hashtable(size, ...)           \
+       _create_hashtable(size, #__VA_ARGS__)
 
 #define hash_add(ht,key,value)                \
        _hash_add((ht),(key),(value))
@@ -69,7 +69,7 @@ typedef struct _hashtable{
 } HashTable;
 
 
-HashTable * _create_hashmap(uint size, const char* s_typename);
+HashTable * _create_hashtable(uint size, const char* s_typename);
 int _hash_add(HashTable * ht, ...);
 int _hash_find(HashTable * ht, ...);
 int _hash_del(HashTable * ht, ...);

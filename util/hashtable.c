@@ -98,7 +98,7 @@ static ulong hash_func(char *arKey)
 }
 
 
-HashTable * _create_hashmap(uint size, const char* s_typename){
+HashTable * _create_hashtable(uint size, const char* s_typename){
     if (!s_typename || strlen(s_typename) == 0 || strlen(s_typename) >= TNLEN)
         return NULL;
     int  count;
