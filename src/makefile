@@ -1,18 +1,16 @@
 SHELL    = /bin/bash
-UTILDIR  = ../util/
+UTILDIR  = ../util
 
 CC       = gcc -std=c99
-CFBASE   = -Wall -pedantic $(ADDFLAGS)
+CFBASE   = -Wall -pedantic 
 CFLAGS   = $(CFBASE) -DNDEBUG -O3
 INCS     = -I$(UTILDIR)
 
 LD       = gcc
-LDFLAGS  = 
-LIBS     = -lm
+LIBDIR   = -L../util
+LIBS     = -lm -lhts
 
-HDRS     = $(UTILDIR)/hashtable.h
-OBJS     = $(UTILDIR)/hashtable.o  \
-           test.o
+OBJS     = test.o
 
 PRGS     = main
 
@@ -21,8 +19,8 @@ PRGS     = main
 #-----------------------------------------------------------------------
 all:        $(PRGS)
 
-main:       $(OBJS) makefile
-	$(LD) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
+main:       $(OBJS) statics makefile
+	$(LD) $(OBJS) $(LIBDIR) $(LIBS) -o $@
 
 #-----------------------------------------------------------------------
 # Main Program
@@ -33,9 +31,8 @@ test.o: test.c makefile
 #-----------------------------------------------------------------------
 # External Modules
 #-----------------------------------------------------------------------
-$(UTILDIR)/hashtable.o:
-	cd $(UTILDIR);  $(MAKE) hashtable.o  ADDFLAGS=$(ADDFLAGS)
-
+statics:
+	cd $(UTILDIR);  $(MAKE) libhts.a
 #-----------------------------------------------------------------------
 # Installation
 #-----------------------------------------------------------------------
