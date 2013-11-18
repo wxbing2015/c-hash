@@ -14,7 +14,7 @@
 
 int main(){
     printf("\n<int,double>\n");
-    HashTable *ht = create_hashmap(100,int,double);
+    HashTable *ht = create_hashtable(100,int,double);
     double t = 2000000000.0;
     hash_add(ht,100,t);
     hash_add(ht,20,15.0);
@@ -39,7 +39,7 @@ int main(){
     ht = NULL;
 
     printf("\n<char*,int>\n");
-    HashTable *ht1 = create_hashmap(100,char*,int);
+    HashTable *ht1 = create_hashtable(100,char*,int);
     hash_add(ht1,"song",1000);
     hash_add(ht1,"abcd",1235451254);
     int value;
@@ -59,7 +59,7 @@ int main(){
 
     printf("\n<char*,double>\n");
 
-    HashTable *ht2 = create_hashmap(100, char*, double);
+    HashTable *ht2 = create_hashtable(100, char*, double);
     hash_add(ht2,"whatafuck",12314524.1235);
     hash_add(ht2,"xiaoqiang",123.123);
     double b;
@@ -85,7 +85,7 @@ int main(){
 
     printf("\n<char*,char*>\n");
 
-    HashTable * ht3 = create_hashmap(100,char*,char*);
+    HashTable * ht3 = create_hashtable(100,char*,char*);
     hash_add(ht3,"fuck","make love");
     hash_add(ht3,"like","not love");
     char * v_tmp;
